@@ -1,11 +1,13 @@
 #!/bin/bash
 
-# Update system
-sudo apt-get update
-sudo apt-get upgrade -y
+# Update system (only if online)
+if ping -c 1 8.8.8.8 &> /dev/null; then
+    sudo apt-get update
+    sudo apt-get upgrade -y
+fi
 
-# Install required packages
-sudo apt-get install -y hostapd dnsmasq
+# Install required packages from local directory
+sudo dpkg -i packages/*.deb
 
 # Stop services
 sudo systemctl stop hostapd

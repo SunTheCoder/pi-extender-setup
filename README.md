@@ -7,6 +7,7 @@ This project configures a Raspberry Pi Zero 2W as a wireless network extender fo
 - Uses the same SSID and password as the main network
 - Automatic device switching between main router and extender
 - Easy setup with a single script
+- Offline installation support
 
 ## Requirements
 - Raspberry Pi Zero 2W
@@ -19,7 +20,30 @@ This project configures a Raspberry Pi Zero 2W as a wireless network extender fo
 
 ## Setup Instructions
 
+### Preparing the Packages (On a computer with internet access)
+
 1. Clone this repository:
+   ```bash
+   git clone https://github.com/yourusername/pi-extender-setup.git
+   cd pi-extender-setup
+   ```
+
+2. Download the required packages:
+   ```bash
+   chmod +x download_packages.sh
+   ./download_packages.sh
+   ```
+
+3. Commit the packages to the repository:
+   ```bash
+   git add packages/
+   git commit -m "Add offline installation packages"
+   git push
+   ```
+
+### Installing on the Raspberry Pi
+
+1. Clone this repository (or copy the files if you don't have Git):
    ```bash
    git clone https://github.com/yourusername/pi-extender-setup.git
    cd pi-extender-setup
@@ -42,6 +66,7 @@ This project configures a Raspberry Pi Zero 2W as a wireless network extender fo
 
 ## Configuration Files
 - `setup.sh`: Main setup script
+- `download_packages.sh`: Script to download required packages
 - Configuration files are generated during setup:
   - `/etc/hostapd/hostapd.conf`
   - `/etc/wpa_supplicant/wpa_supplicant.conf`
